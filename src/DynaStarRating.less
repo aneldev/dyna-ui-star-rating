@@ -1,0 +1,61 @@
+@import "~dyna-ui-styles/colors/pantone-coated";
+@import "~dyna-ui-styles/styles/WHITE_ORANGE";
+
+.dyna-star-rating {
+  position: relative;
+  user-select: none;
+
+  &__stars {
+    .dyna-svg {
+    }
+  }
+
+  &__stars&__back {
+    display: inline-block;
+    fill: lightgray;
+  }
+
+  &__stars&__front {
+    position: absolute;
+    top: 0;
+    fill: green;
+    width: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 200ms ease-in-out,
+    fill 200ms ease-in-out;
+  }
+
+  &__star {
+    transition: opacity 200ms ease-in-out;
+
+    &:hover {
+      opacity: 0.65;
+    }
+  }
+
+  &--mode-EDIT &__star {
+    cursor: pointer;
+  }
+
+  &--color-YELLOW &__front {
+    fill: @color-pc-130-c;
+  }
+  &--color-BLACK &__front {
+    fill: @color-pc-black-c;
+  }
+  &--color-GREEN &__front {
+    fill: @color-pc-7739-c;
+  }
+  &--color-BLUE &__front {
+    fill: @color-pc-661-c;
+  }
+  &--color-RED &__front {
+    fill: @color-pc-red-032-c;
+  }
+
+  &__number {
+    position: relative;
+    top: -12%;
+  }
+}
