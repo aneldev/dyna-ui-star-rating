@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("dyna-class-name"));
+		module.exports = factory(require("dyna-interfaces"), require("react"), require("dyna-svg"), require("dyna-class-name"));
 	else if(typeof define === 'function' && define.amd)
-		define("dyna-ts-react-module-boilerplate", ["react", "dyna-class-name"], factory);
+		define("dyna-ui-star-rating", ["dyna-interfaces", "react", "dyna-svg", "dyna-class-name"], factory);
 	else if(typeof exports === 'object')
-		exports["dyna-ts-react-module-boilerplate"] = factory(require("react"), require("dyna-class-name"));
+		exports["dyna-ui-star-rating"] = factory(require("dyna-interfaces"), require("react"), require("dyna-svg"), require("dyna-class-name"));
 	else
-		root["dyna-ts-react-module-boilerplate"] = factory(root["react"], root["dyna-class-name"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__) {
+		root["dyna-ui-star-rating"] = factory(root["dyna-interfaces"], root["react"], root["dyna-svg"], root["dyna-class-name"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,32 +70,38 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(1);
-
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Button_1 = __webpack_require__(2);
-exports.DynaStarRating = Button_1.Button;
-exports.EStyle = Button_1.EStyle;
-exports.EColor = Button_1.EColor;
-exports.ESize = Button_1.ESize;
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var DynaStarRating_1 = __webpack_require__(3);
+exports.DynaStarRating = DynaStarRating_1.DynaStarRating;
+exports.EColor = DynaStarRating_1.EColor;
+var dyna_interfaces_1 = __webpack_require__(0);
+exports.EFormControlMode = dyna_interfaces_1.EFormControlMode;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -111,58 +117,83 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(3);
-var dyna_class_name_1 = __webpack_require__(4);
-__webpack_require__(5);
-var EStyle;
-(function (EStyle) {
-    EStyle["ROUNDED"] = "ROUNDED";
-})(EStyle = exports.EStyle || (exports.EStyle = {}));
+var React = __webpack_require__(4);
+var dyna_svg_1 = __webpack_require__(5);
+var dyna_class_name_1 = __webpack_require__(6);
+var dyna_interfaces_1 = __webpack_require__(0);
+var utils_1 = __webpack_require__(7);
+var starIcon = __webpack_require__(8);
+__webpack_require__(9);
 var EColor;
 (function (EColor) {
-    EColor["WHITE_BLACK"] = "WHITE_BLACK";
-    EColor["WHITE_RED"] = "WHITE_RED";
-    EColor["BLACK_WHITE"] = "BLACK_WHITE";
-    EColor["TRANSPARENT_WHITE"] = "TRANSPARENT_WHITE";
+    EColor["YELLOW"] = "YELLOW";
+    EColor["BLACK"] = "BLACK";
+    EColor["GREEN"] = "GREEN";
+    EColor["BLUE"] = "BLUE";
+    EColor["RED"] = "RED";
 })(EColor = exports.EColor || (exports.EColor = {}));
-var ESize;
-(function (ESize) {
-    ESize["SMALL"] = "SMALL";
-    ESize["MEDIUM"] = "MEDIUM";
-    ESize["LARGE"] = "LARGE";
-    ESize["XLARGE"] = "XLARGE";
-})(ESize = exports.ESize || (exports.ESize = {}));
-var Button = /** @class */ (function (_super) {
-    __extends(Button, _super);
-    function Button() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.className = dyna_class_name_1.dynaClassName("my-button");
+var DynaStarRating = /** @class */ (function (_super) {
+    __extends(DynaStarRating, _super);
+    function DynaStarRating(props) {
+        var _this = _super.call(this, props) || this;
+        _this.className = dyna_class_name_1.dynaClassName("dyna-star-rating");
+        _this.state = {
+            size: 0,
+        };
         return _this;
     }
-    Button.prototype.render = function () {
-        var _a = this.props, children = _a.children, style = _a.style, color = _a.color, size = _a.size, href = _a.href, onClick = _a.onClick;
-        var className = this.className(" --style-" + style + " --color-" + color + " --size-" + size);
-        return (React.createElement("a", { className: className, href: href, onClick: onClick },
-            React.createElement("button", null, children)));
+    DynaStarRating.prototype.componentDidMount = function () {
+        this.setState({
+            size: parseInt(getComputedStyle(this.refs.container).fontSize)
+        });
     };
-    Button.defaultProps = {
-        children: null,
-        style: EStyle.ROUNDED,
-        color: EColor.WHITE_BLACK,
-        size: ESize.MEDIUM,
-        href: null,
-        onClick: function () { return undefined; },
+    DynaStarRating.prototype.handleStarClick = function (userValue) {
+        var _a = this.props, value = _a.value, allowNull = _a.allowNull, onChange = _a.onChange;
+        if (allowNull && userValue === value)
+            userValue = null;
+        onChange(userValue);
     };
-    return Button;
+    DynaStarRating.prototype.renderStars = function (className) {
+        var _this = this;
+        var _a = this.props, starsCount = _a.starsCount, mode = _a.mode, value = _a.value;
+        var size = this.state.size;
+        var frontStars = className === "__front";
+        var starsContinerWidth = "";
+        if (frontStars)
+            starsContinerWidth = utils_1.round(((value || 0) * size), mode === dyna_interfaces_1.EFormControlMode.EDIT ? 0 : 3).toString() + "px";
+        return (React.createElement("div", { className: this.className("__stars", className), style: { width: starsContinerWidth } }, Array(starsCount).fill(null).map(function (v, index) { return (React.createElement(dyna_svg_1.DynaSvg, { className: _this.className("__star"), key: index, src: starIcon, style: { width: size + "px", height: size + "px" }, onClick: _this.handleStarClick.bind(_this, index + 1) })); })));
+    };
+    DynaStarRating.prototype.renderNumber = function () {
+        var _a = this.props, showNumber = _a.showNumber, numberPrecision = _a.numberPrecision, value = _a.value;
+        if (!showNumber)
+            return null;
+        return (React.createElement("span", { className: this.className("__number") },
+            " ",
+            utils_1.round(value, numberPrecision).toString()));
+    };
+    DynaStarRating.prototype.render = function () {
+        var _a = this.props, mode = _a.mode, color = _a.color;
+        var size = this.state.size;
+        var className = this.className(" --mode-" + mode + " --color-" + color);
+        return (React.createElement("div", { className: className, ref: "container", style: { height: size + "px" } },
+            this.renderStars("__back"),
+            this.renderStars("__front"),
+            this.renderNumber()));
+    };
+    DynaStarRating.defaultProps = {
+        color: EColor.YELLOW,
+        mode: dyna_interfaces_1.EFormControlMode.VIEW,
+        showNumber: true,
+        numberPrecision: 1,
+        allowNull: false,
+        starsCount: 5,
+        value: null,
+        onChange: function (value) { return undefined; },
+    };
+    return DynaStarRating;
 }(React.Component));
-exports.DynaStarRating = Button;
+exports.DynaStarRating = DynaStarRating;
 
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }),
 /* 4 */
@@ -172,12 +203,42 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.round = function (value, digits) {
+    return Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits);
+};
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = "<svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 37.286 37.287\" style=\"enable-background:new 0 0 37.286 37.287;\" xml:space=\"preserve\"><g><path d=\"M36.683,16.339l-7.567,7.377l1.786,10.417c0.128,0.75-0.182,1.509-0.797,1.957c-0.348,0.253-0.762,0.382-1.176,0.382 c-0.318,0-0.638-0.076-0.931-0.23l-9.355-4.918l-9.355,4.918c-0.674,0.355-1.49,0.295-2.107-0.15 c-0.615-0.448-0.924-1.206-0.795-1.957l1.787-10.417L0.604,16.34c-0.547-0.531-0.741-1.326-0.508-2.05 c0.236-0.724,0.861-1.251,1.615-1.361l10.459-1.521l4.68-9.478c0.335-0.684,1.031-1.116,1.792-1.116 c0.763,0,1.456,0.432,1.793,1.115l4.68,9.478l10.461,1.521c0.752,0.109,1.379,0.637,1.611,1.361 C37.425,15.013,37.226,15.808,36.683,16.339z\"></path></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>"
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(6);
+var content = __webpack_require__(10);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -185,14 +246,14 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(8)(content, options);
+var update = __webpack_require__(12)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./Button.less", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./Button.less");
+		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaStarRating.less", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaStarRating.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -202,21 +263,21 @@ if(false) {
 }
 
 /***/ }),
-/* 6 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+exports = module.exports = __webpack_require__(11)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".my-button {\n  outline: none;\n}\n.my-button--style-ROUNDED {\n  font-size: 0;\n}\n.my-button--style-ROUNDED button {\n  outline: none;\n  border-style: solid;\n  cursor: pointer;\n  -webkit-transition: background-color 200ms ease-out;\n  transition: background-color 200ms ease-out;\n}\n.my-button--style-ROUNDED.my-button--size-SMALL button {\n  padding: 2px 8px;\n  font-size: 8px;\n  line-height: 10px;\n  border-width: 1px;\n  border-radius: 8px;\n  font-weight: bold;\n}\n.my-button--style-ROUNDED.my-button--size-SMALL button:active {\n  position: relative;\n  top: 1px;\n  left: 1px;\n}\n.my-button--style-ROUNDED.my-button--size-MEDIUM button {\n  padding: 4px 16px;\n  font-size: 14px;\n  line-height: 22px;\n  border-width: 1px;\n  border-radius: 16px;\n  font-weight: bold;\n}\n.my-button--style-ROUNDED.my-button--size-MEDIUM button:active {\n  position: relative;\n  top: 1px;\n  left: 1px;\n}\n.my-button--style-ROUNDED.my-button--size-LARGE button {\n  padding: 8px 32px;\n  font-size: 26px;\n  line-height: 46px;\n  border-width: 1px;\n  border-radius: 32px;\n  font-weight: bold;\n}\n.my-button--style-ROUNDED.my-button--size-LARGE button:active {\n  position: relative;\n  top: 2px;\n  left: 2px;\n}\n.my-button--style-ROUNDED.my-button--size-XLARGE button {\n  padding: 16px 64px;\n  font-size: 40px;\n  line-height: 92px;\n  border-width: 2px;\n  border-radius: 64px;\n  font-weight: bold;\n}\n.my-button--style-ROUNDED.my-button--size-XLARGE button:active {\n  position: relative;\n  top: 2px;\n  left: 2px;\n}\n.my-button--color-WHITE_BLACK button {\n  border-color: black;\n  background: white;\n  color: black;\n}\n.my-button--color-WHITE_BLACK button:hover {\n  background-color: #e6e6e6;\n}\n.my-button--color-WHITE_BLACK button:active {\n  background-color: #d1d1d1;\n}\n.my-button--color-WHITE_RED button {\n  border-color: red;\n  background: white;\n  color: red;\n}\n.my-button--color-WHITE_RED button:hover {\n  background-color: #e6e6e6;\n}\n.my-button--color-WHITE_RED button:active {\n  background-color: #d1d1d1;\n}\n.my-button--color-BLACK_WHITE button {\n  border-color: black;\n  background: black;\n  color: white;\n}\n.my-button--color-BLACK_WHITE button:hover {\n  background-color: #333333;\n}\n.my-button--color-BLACK_WHITE button:active {\n  background-color: #525252;\n}\n.my-button--color-TRANSPARENT_WHITE button {\n  border-color: white;\n  background: transparent;\n  color: white;\n}\n.my-button--color-TRANSPARENT_WHITE button:hover {\n  border-color: #e6e6e6;\n  color: #e6e6e6;\n}\n.my-button--color-TRANSPARENT_WHITE button:active {\n  border-color: #d1d1d1;\n  color: #d1d1d1;\n}\n", ""]);
+exports.push([module.i, ".dyna-star-rating {\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.dyna-star-rating__stars.dyna-star-rating__back {\n  display: inline-block;\n  fill: lightgray;\n}\n.dyna-star-rating__stars.dyna-star-rating__front {\n  position: absolute;\n  top: 0;\n  fill: green;\n  width: 40px;\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n  transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n}\n.dyna-star-rating__star {\n  -webkit-transition: opacity 200ms ease-in-out;\n  transition: opacity 200ms ease-in-out;\n}\n.dyna-star-rating__star:hover {\n  opacity: 0.65;\n}\n.dyna-star-rating--mode-EDIT .dyna-star-rating__star {\n  cursor: pointer;\n}\n.dyna-star-rating--color-YELLOW .dyna-star-rating__front {\n  fill: #F2A900;\n}\n.dyna-star-rating--color-BLACK .dyna-star-rating__front {\n  fill: #2D2926;\n}\n.dyna-star-rating--color-GREEN .dyna-star-rating__front {\n  fill: #319B42;\n}\n.dyna-star-rating--color-BLUE .dyna-star-rating__front {\n  fill: #003594;\n}\n.dyna-star-rating--color-RED .dyna-star-rating__front {\n  fill: #EF3340;\n}\n.dyna-star-rating__number {\n  position: relative;\n  top: -12%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -298,7 +359,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -344,7 +405,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(9);
+var	fixUrls = __webpack_require__(13);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -657,7 +718,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
