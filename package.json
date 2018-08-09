@@ -28,7 +28,7 @@
     "reinstall": "rm ./package-lock.json; rm -rf ./node_modules; npm install"
   },
   "keywords": [],
-  "author": "",
+  "author": "Anel dev",
   "license": "MIT",
   "dependencies": {
     "dyna-class-name": "^2.0.1",

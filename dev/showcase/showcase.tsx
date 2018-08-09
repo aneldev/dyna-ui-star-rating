@@ -38,6 +38,14 @@ export default {
 			},
 			props: [
 				{
+					slug: 'value-undefined-black',
+					title: 'undefined black',
+					props: {
+						value: undefined,
+						color: EColor.BLACK,
+					} as IDynaStarRatingProps
+				},
+				{
 					slug: 'value-null-black',
 					title: 'null black',
 					props: {
