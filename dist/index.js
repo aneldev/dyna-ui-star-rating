@@ -173,6 +173,17 @@ var DynaStarRating = /** @class */ (function (_super) {
             " ",
             utils_1.round(value, numberPrecision).toString()));
     };
+    DynaStarRating.prototype.renderRatesCount = function () {
+        var _a = this.props, showNumber = _a.showNumber, ratesCount = _a.ratesCount;
+        if (!showNumber)
+            return null;
+        if (ratesCount === null)
+            return null;
+        return (React.createElement("span", { className: this.className("__rates-count") },
+            " (",
+            ratesCount,
+            ")"));
+    };
     DynaStarRating.prototype.render = function () {
         var _a = this.props, mode = _a.mode, color = _a.color;
         var size = this.state.size;
@@ -180,7 +191,8 @@ var DynaStarRating = /** @class */ (function (_super) {
         return (React.createElement("div", { className: className, ref: "container", style: { height: size + "px" } },
             this.renderStars("__back"),
             this.renderStars("__front"),
-            this.renderNumber()));
+            this.renderNumber(),
+            this.renderRatesCount()));
     };
     DynaStarRating.defaultProps = {
         color: EColor.YELLOW,
@@ -189,6 +201,7 @@ var DynaStarRating = /** @class */ (function (_super) {
         numberPrecision: 1,
         allowNull: false,
         starsCount: 5,
+        ratesCount: null,
         value: null,
         onChange: function (value) { return undefined; },
     };
@@ -273,7 +286,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".dyna-star-rating {\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.dyna-star-rating__stars.dyna-star-rating__back {\n  display: inline-block;\n  fill: lightgray;\n}\n.dyna-star-rating__stars.dyna-star-rating__front {\n  position: absolute;\n  top: 0;\n  fill: green;\n  width: 40px;\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n  transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n}\n.dyna-star-rating__star {\n  -webkit-transition: opacity 200ms ease-in-out;\n  transition: opacity 200ms ease-in-out;\n}\n.dyna-star-rating__star:hover {\n  opacity: 0.65;\n}\n.dyna-star-rating--mode-EDIT .dyna-star-rating__star {\n  cursor: pointer;\n}\n.dyna-star-rating--color-YELLOW .dyna-star-rating__front {\n  fill: #F2A900;\n}\n.dyna-star-rating--color-BLACK .dyna-star-rating__front {\n  fill: #2D2926;\n}\n.dyna-star-rating--color-GREEN .dyna-star-rating__front {\n  fill: #319B42;\n}\n.dyna-star-rating--color-BLUE .dyna-star-rating__front {\n  fill: #003594;\n}\n.dyna-star-rating--color-RED .dyna-star-rating__front {\n  fill: #EF3340;\n}\n.dyna-star-rating__number {\n  position: relative;\n  top: -12%;\n}\n", ""]);
+exports.push([module.i, ".dyna-star-rating {\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.dyna-star-rating__stars.dyna-star-rating__back {\n  display: inline-block;\n  fill: lightgray;\n}\n.dyna-star-rating__stars.dyna-star-rating__front {\n  position: absolute;\n  top: 0;\n  fill: green;\n  width: 40px;\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n  transition: width 200ms ease-in-out, fill 200ms ease-in-out;\n}\n.dyna-star-rating__star {\n  -webkit-transition: opacity 200ms ease-in-out;\n  transition: opacity 200ms ease-in-out;\n}\n.dyna-star-rating__star:hover {\n  opacity: 0.65;\n}\n.dyna-star-rating--mode-EDIT .dyna-star-rating__star {\n  cursor: pointer;\n}\n.dyna-star-rating--color-YELLOW .dyna-star-rating__front {\n  fill: #F2A900;\n}\n.dyna-star-rating--color-BLACK .dyna-star-rating__front {\n  fill: #2D2926;\n}\n.dyna-star-rating--color-GREEN .dyna-star-rating__front {\n  fill: #319B42;\n}\n.dyna-star-rating--color-BLUE .dyna-star-rating__front {\n  fill: #003594;\n}\n.dyna-star-rating--color-RED .dyna-star-rating__front {\n  fill: #EF3340;\n}\n.dyna-star-rating__number {\n  position: relative;\n  top: -12%;\n}\n.dyna-star-rating__rates-count {\n  position: relative;\n  top: -18%;\n  font-size: 0.8rem;\n}\n", ""]);
 
 // exports
 

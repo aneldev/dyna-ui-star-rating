@@ -102,7 +102,7 @@ export default {
 					} as IDynaStarRatingProps
 				},
 				{
-					slug: 'value-4.5-yellow',
+					slug: 'value-45-yellow',
 					title: '4.5 yellow',
 					props: {
 						value: 4.5,
@@ -110,7 +110,7 @@ export default {
 					} as IDynaStarRatingProps
 				},
 				{
-					slug: 'value-4.5-yellow-rates-count',
+					slug: 'value-45-yellow-rates-count',
 					title: '4.5 yellow and rates count',
 					props: {
 						value: 4.5,

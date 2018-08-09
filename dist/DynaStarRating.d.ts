@@ -12,6 +12,7 @@ export interface IDynaStarRatingProps {
     color?: EColor;
     mode?: EFormControlMode;
     starsCount?: number;
+    ratesCount?: number;
     value: number;
     showNumber?: boolean;
     numberPrecision?: number;
@@ -32,5 +33,6 @@ export declare class DynaStarRating extends React.Component<IDynaStarRatingProps
     private handleStarClick;
     private renderStars;
     private renderNumber;
+    private renderRatesCount;
     render(): JSX.Element;
 }
