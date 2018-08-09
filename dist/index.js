@@ -167,6 +167,8 @@ var DynaStarRating = /** @class */ (function (_super) {
         var _a = this.props, showNumber = _a.showNumber, numberPrecision = _a.numberPrecision, value = _a.value;
         if (!showNumber)
             return null;
+        if (value === null)
+            return null;
         return (React.createElement("span", { className: this.className("__number") },
             " ",
             utils_1.round(value, numberPrecision).toString()));
