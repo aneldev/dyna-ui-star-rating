@@ -99,6 +99,7 @@ export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaS
 		} = this.props;
 
 		if (!showNumber) return null;
+		if (value === null) return null;
 
 		return (
 			<span className={this.className("__number")}> {round(value, numberPrecision).toString()}</span>
