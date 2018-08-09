@@ -9,6 +9,7 @@ export declare enum EColor {
     RED = "RED"
 }
 export interface IDynaStarRatingProps {
+    className?: string;
     color?: EColor;
     mode?: EFormControlMode;
     starsCount?: number;

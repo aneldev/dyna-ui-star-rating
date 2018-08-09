@@ -185,9 +185,9 @@ var DynaStarRating = /** @class */ (function (_super) {
             ")"));
     };
     DynaStarRating.prototype.render = function () {
-        var _a = this.props, mode = _a.mode, color = _a.color;
+        var _a = this.props, userClassName = _a.className, mode = _a.mode, color = _a.color;
         var size = this.state.size;
-        var className = this.className(" --mode-" + mode + " --color-" + color);
+        var className = this.className(" --mode-" + mode + " --color-" + color, userClassName ? "/" + userClassName : null);
         return (React.createElement("div", { className: className, ref: "container", style: { height: size + "px" } },
             this.renderStars("__back"),
             this.renderStars("__front"),
@@ -195,6 +195,7 @@ var DynaStarRating = /** @class */ (function (_super) {
             this.renderRatesCount()));
     };
     DynaStarRating.defaultProps = {
+        className: '',
         color: EColor.YELLOW,
         mode: dyna_interfaces_1.EFormControlMode.VIEW,
         showNumber: true,
