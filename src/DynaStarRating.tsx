@@ -16,6 +16,7 @@ export enum EColor {
 }
 
 export interface IDynaStarRatingProps {
+	className?: string;
 	color?: EColor;
 	mode?: EFormControlMode;    // default is view
 	starsCount?: number;        // default is 5
@@ -34,6 +35,7 @@ export interface IDynaStarRatingState {
 
 export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaStarRatingState> {
 	static defaultProps: IDynaStarRatingProps = {
+		className: '',
 		color: EColor.YELLOW,
 		mode: EFormControlMode.VIEW,
 		showNumber: true,
@@ -123,13 +125,17 @@ export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaS
 
 	public render(): JSX.Element {
 		const {
+			className: userClassName,
 			mode, color,
 		} = this.props;
 		const {
 			size,
 		} = this.state;
 
-		const className: string = this.className(` --mode-${mode} --color-${color}`);
+		const className: string = this.className(
+			` --mode-${mode} --color-${color}`,
+			userClassName ? "/" + userClassName : null,
+		);
 
 		return (
 			<div

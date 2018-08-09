@@ -41,6 +41,7 @@ export default {
 					slug: 'value-undefined-black',
 					title: 'undefined black',
 					props: {
+						className: "main-rating",
 						value: undefined,
 						color: EColor.BLACK,
 					} as IDynaStarRatingProps
