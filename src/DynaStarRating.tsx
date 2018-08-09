@@ -19,6 +19,7 @@ export interface IDynaStarRatingProps {
 	color?: EColor;
 	mode?: EFormControlMode;    // default is view
 	starsCount?: number;        // default is 5
+	ratesCount?: number;        // default is null
 	value: number;              // default is null, how many stars is the rate, max = starsCount, value might have decimal points (i.e.: 3.45)
 	showNumber?: boolean;       // default is true
 	numberPrecision?: number;   // default is 1 decimal point
@@ -39,6 +40,7 @@ export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaS
 		numberPrecision: 1,
 		allowNull: false,
 		starsCount: 5,
+		ratesCount: null,
 		value: null,
 		onChange: (value: number) => undefined,
 	};
@@ -105,6 +107,19 @@ export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaS
 			<span className={this.className("__number")}> {round(value, numberPrecision).toString()}</span>
 		);
 	}
+	private renderRatesCount(): JSX.Element {
+		const {
+			showNumber,
+			ratesCount,
+		} = this.props;
+
+		if (!showNumber) return null;
+		if (ratesCount === null) return null;
+
+		return (
+			<span className={this.className("__rates-count")}> ({ratesCount})</span>
+		);
+	}
 
 	public render(): JSX.Element {
 		const {
@@ -125,6 +140,7 @@ export class DynaStarRating extends React.Component<IDynaStarRatingProps, IDynaS
 				{this.renderStars("__back")}
 				{this.renderStars("__front")}
 				{this.renderNumber()}
+				{this.renderRatesCount()}
 			</div>
 		);
 	}

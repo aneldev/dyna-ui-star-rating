@@ -38,6 +38,22 @@ export default {
 			},
 			props: [
 				{
+					slug: 'value-null-black',
+					title: 'null black',
+					props: {
+						value: null,
+						color: EColor.BLACK,
+					} as IDynaStarRatingProps
+				},
+				{
+					slug: 'value-0-black',
+					title: '0 black',
+					props: {
+						value: 0,
+						color: EColor.BLACK,
+					} as IDynaStarRatingProps
+				},
+				{
 					slug: 'value-1-black',
 					title: '1 black',
 					props: {
@@ -82,6 +98,15 @@ export default {
 					title: '4.5 yellow',
 					props: {
 						value: 4.5,
+						color: EColor.YELLOW,
+					} as IDynaStarRatingProps
+				},
+				{
+					slug: 'value-4.5-yellow-rates-count',
+					title: '4.5 yellow and rates count',
+					props: {
+						value: 4.5,
+						ratesCount: 234,
 						color: EColor.YELLOW,
 					} as IDynaStarRatingProps
 				},
